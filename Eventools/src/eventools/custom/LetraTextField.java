@@ -18,7 +18,7 @@ public class LetraTextField extends TextField{
     
     @Override
     public void replaceText(int i, int i1, String string){
-        if(string.matches("[a-zA-Z]") || string.isEmpty()){
+        if(string.matches("[a-zA-Z' ']") || string.isEmpty()){
             super.replaceText(i, i1, string);
         }
     }

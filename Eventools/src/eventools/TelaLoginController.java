@@ -6,6 +6,8 @@
 package eventools;
 
 
+import Model.bean.CadastroCliente;
+import Model.dao.CadastroClienteDAO;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
@@ -42,7 +44,7 @@ public class TelaLoginController implements Initializable {
     @FXML
     public void acaoLogin(ActionEvent event) throws IOException{
         if (campoEmail.getText().equals("admin") && campoSenha.getText().equals("admin")){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("telaEmpresa.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("telaEmpresa2.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
 
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -60,6 +62,8 @@ public class TelaLoginController implements Initializable {
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(tableViewScene);
         window.show();
-        }
+    }
+    
+    
         
 }

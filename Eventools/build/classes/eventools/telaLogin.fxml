@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eventools.TelaLoginController">
+<AnchorPane id="AnchorPane" prefHeight="490.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eventools.TelaLoginController">
    <children>
-      <TextField fx:id="campoEmail" layoutX="239.0" layoutY="165.0" />
-      <Button fx:id="botaoEntrar" layoutX="282.0" layoutY="293.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="25.0" prefWidth="62.0" text="Entrar" />
-      <Button layoutX="344.0" layoutY="396.0" mnemonicParsing="false" onAction="#acaoCadastrese" text="Cadastre-se" />
-      <Label layoutX="291.0" layoutY="99.0" text="Login">
+      <TextField fx:id="campoEmail" layoutX="127.0" layoutY="143.0" />
+      <Button fx:id="botaoEntrar" layoutX="170.0" layoutY="271.0" mnemonicParsing="false" onAction="#acaoLogin" prefHeight="25.0" prefWidth="62.0" text="Entrar" />
+      <Button layoutX="232.0" layoutY="374.0" mnemonicParsing="false" onAction="#acaoCadastrese" text="Cadastre-se" />
+      <Label layoutX="179.0" layoutY="77.0" text="Login">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="159.0" layoutY="169.0" text="E-mail" />
-      <Label layoutX="160.0" layoutY="237.0" text="Senha" />
-      <Label layoutX="173.0" layoutY="400.0" text="Ainda não tem cadastro?" />
-      <PasswordField fx:id="campoSenha" layoutX="239.0" layoutY="233.0" />
+      <Label layoutX="47.0" layoutY="147.0" text="E-mail" />
+      <Label layoutX="48.0" layoutY="215.0" text="Senha" />
+      <Label layoutX="61.0" layoutY="378.0" text="Ainda não tem cadastro?" />
+      <PasswordField fx:id="campoSenha" layoutX="127.0" layoutY="211.0" />
    </children>
 </AnchorPane>

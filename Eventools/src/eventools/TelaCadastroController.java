@@ -5,6 +5,8 @@
  */
 package eventools;
 
+import Model.bean.CadastroCliente;
+import Model.dao.CadastroClienteDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,7 +33,7 @@ import javax.swing.JOptionPane;
  */
 public class TelaCadastroController implements Initializable {
 
-    ObservableList<String> sexoList = FXCollections.observableArrayList("Masculino", "Feminino");
+    ObservableList<String> sexoList = FXCollections.observableArrayList("M", "F");
     
     @FXML
     private ComboBox SexoBox;
@@ -68,7 +70,28 @@ public class TelaCadastroController implements Initializable {
     
     @FXML
     public void finalizarCadastro(ActionEvent event) throws IOException{
-       if (validarNome() && validarCpf() && validarTelefone() && validarEmail() && validarSenha()){
+       if (validarNome(campoNome.getText()) && validarCpf(campoCpf.getText()) && validarTelefone(campoTelefone.getText())
+               && validarEmail(campoEmail.getText()) && validarSenha(campoSenha.getText(), campoConfSenha.getText())){
+           //PARTE DE MATHEUS HENRIQUE(ALTERADA)*****************************************************
+           // SALVANDO AS ENTRADAS NO BANCO DE DADOS*************************************************
+           
+           
+           CadastroCliente c = new CadastroCliente();
+           CadastroClienteDAO dao = new CadastroClienteDAO();
+           c.setNome(campoNome.getText());
+           c.setSexo(SexoBox.getValue().toString());
+           c.setCPF(campoCpf.getText());
+           c.setTelefone(campoTelefone.getText());
+           c.setEmail(campoEmail.getText());
+           c.setEndereco(campoEndereco.getText());
+           c.setSenha(campoSenha.getText());
+           c.setConfirmarSenha(campoConfSenha.getText());
+           
+           dao.create(c);
+           
+           
+           
+           //FINAL DA PARTE ALTERADA********************************************************************
            JOptionPane.showMessageDialog(null, "Conta Criada com Sucesso");
            Parent tableViewParent = FXMLLoader.load(getClass().getResource("telaLogin.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
@@ -80,8 +103,8 @@ public class TelaCadastroController implements Initializable {
        }
     }
     
-    public boolean validarCpf(){
-        if(campoCpf.getText().length()==11){
+    public boolean validarCpf(String cpf){
+        if(cpf.length()==11){
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "verifique o campo CPF");
@@ -89,21 +112,21 @@ public class TelaCadastroController implements Initializable {
         }
     }
     
-    public boolean validarSenha(){
-        if ((campoSenha.getText().length()>=8)){
+    public boolean validarSenha(String s1, String s2){
+        if ((s1.length()>=8)){
         }else{
         JOptionPane.showMessageDialog(null, "Senha menor que 8 caracteres");
         return false;
         }
-        if(campoSenha.getText().equals(campoConfSenha.getText())){
+        if(s1.equals(s2)){
             return true;
         }else{
             JOptionPane.showMessageDialog(null, "Senhas diferentes");
             return false;
         }
     }
-    public boolean validarTelefone(){
-        if(campoTelefone.getText().length()>0){
+    public boolean validarTelefone(String tel){
+        if(tel.length()>=8){
            return true;
         }else{
             JOptionPane.showMessageDialog(null, "Verifique o campo Telefone");
@@ -111,8 +134,8 @@ public class TelaCadastroController implements Initializable {
         }
     }
     
-    public boolean validarEmail(){
-        if (campoEmail.getText().length()>0){
+    public boolean validarEmail(String email){
+        if (email.length()>0){
             return true;
         } else{
             JOptionPane.showMessageDialog(null, "Verifique o campo email");
@@ -120,8 +143,8 @@ public class TelaCadastroController implements Initializable {
         }
     }
     
-    public boolean validarNome(){
-        if(campoNome.getText().length()>5){
+    public boolean validarNome(String nome){
+        if(nome.length()>5){
             return true;
         } else{
             JOptionPane.showMessageDialog(null, "Verifique o campo nome");
